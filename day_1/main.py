@@ -1,11 +1,4 @@
-def day_1() -> tuple[int, int]:
-    arr = []
-    arr2 = []
-    with open('input') as f:
-        for line in f:
-            arr.append(int(line.split('   ')[0]))
-            arr2.append(int(line.split('   ')[1]))
-    f.close()
+def day_1(arr: list, arr2: list) -> tuple[int, int]:
     arr.sort()
     arr2.sort()
 
@@ -20,5 +13,14 @@ def day_1() -> tuple[int, int]:
 
 
 if __name__ == '__main__':
-    print(f'Day 1 part 1 answer: {day_1()[0]}')
-    print(f'Day 1 part 2 answer: {day_1()[1]}')
+    list1 = []
+    list2 = []
+    with open('input') as f:
+        for line in f:
+            list1.append(int(line.split('   ')[0]))
+            list2.append(int(line.split('   ')[1]))
+    f.close()
+
+    part1, part2 = day_1(list1, list2)
+    print(f'Day 1 part 1 answer: {part1}')
+    print(f'Day 1 part 2 answer: {part2}')
