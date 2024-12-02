@@ -36,7 +36,12 @@ class TestPart1(unittest.TestCase):
         assert res is True
 
     def test6(self):
-        input = [1, 1, 1, 1, 4]
+        input = [96, 94, 93, 92, 91, 90, 87, 90]
+        res = main.check_list(input)
+        assert res is False
+
+    def test7(self):
+        input = [95, 96, 99, 97, 96, 95, 94, 96]
         res = main.check_list(input)
         assert res is False
 class TestPart2(unittest.TestCase):

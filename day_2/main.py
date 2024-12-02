@@ -1,12 +1,11 @@
 def day2(arr:list[list[int]]) -> int:
     # Either increasing or decreasing order 
-    # Difference of at least one and at max three    
+    # Difference of at least one and at max three
     res_part1 = list(map(check_list, arr))
-    print(list(enumerate(res_part1, 1)))
     return res_part1.count(True)
 
 def check_list(input_arr: list[int]) -> bool:
-    res:bool = True
+    res: list[bool] = []
     counter = 1
     sorting_global = None
     while counter is not len(input_arr):
@@ -14,19 +13,17 @@ def check_list(input_arr: list[int]) -> bool:
         p2 = input_arr[counter]
         num = p1 - p2
         sorting = 'Asc' if num < 0 else 'Desc'
-        if (sorting != sorting_global and sorting_global is not None) or res is False:
+        if sorting != sorting_global and sorting_global is not None:
             return False
-        sorting_global = sorting if sorting_global is None else None
-        # print(p1, p2, num, res, sorting)
-        if res is False:
-            return res
+        if sorting_global is None:
+            sorting_global = sorting
         match sorting:
             case 'Asc':
-                res = True if 0 > num > -4 else False
+                res.append(True if -1 >= num >= -3 else False)
             case 'Desc':
-                res = True if 0 < num < 4 else False
+                res.append(True if 1 <= num <= 3 else False)
         counter += 1
-    return res
+    return all(res)
 
 def parse_input(path: str) -> list[list[int]]:
     res = []
